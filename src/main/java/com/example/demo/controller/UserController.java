@@ -4,9 +4,12 @@ package com.example.demo.controller;
 import com.example.demo.dto.UserDto;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -21,8 +24,9 @@ public class UserController {
         return userService.getAllUsers();
     }
     @PostMapping("/adduser")
-    public UserDto saveUser(@RequestBody UserDto userDto){
-        return userService.saveUser(userDto);
+    public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
+        userService.saveUser(userDto);
+        return ResponseEntity.ok("User saved successfully");
     }
 
 }
