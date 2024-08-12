@@ -29,4 +29,15 @@ public class UserController {
         return ResponseEntity.ok("User saved successfully");
     }
 
+    @PutMapping("/updateuser")
+    public ResponseEntity<String> updateUser(@RequestBody UserDto userDto) {
+        userService.updateUser(userDto);
+        return ResponseEntity.ok("User updated successfully");
+    }
+
+    @DeleteMapping("/deleteuser")
+    public String deleteUser(@RequestBody UserDto userDto) {
+        return userService.deleteUser(userDto);
+    }
+
 }
